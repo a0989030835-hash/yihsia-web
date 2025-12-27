@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藝霞歌舞劇團 - 香噴噴 (Fragrance Collection)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Hero Section (Slightly shorter for sub-page) -->
+    <header class="hero-section" style="height: 50vh; min-height: 400px;">
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首頁</a></li>
+                <li><a href="index.html#tenacity" class="nav-link">關於藝霞</a></li>
+                <li><a href="scent.html" class="nav-link active">香噴噴</a></li>
+                <li><a href="team.html" class="nav-link">組員介紹</a></li>
+            </ul>
+        </nav>
+
+        <!-- Logo Overlay (Smaller on sub-page) -->
+        <div class="hero-logo-container">
+            <img src="照片/logo.svg" alt="Yi Hsia Logo" class="hero-logo" style="width: 300px;">
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Intro Section -->
+        <section class="section-intro">
+            <div class="container narrow" style="text-align: center;">
+                <h2 class="section-title-design">FRAGRANCE COLLECTION</h2>
+                <p class="intro-text" style="text-align: center; margin-top: 2rem;">
+                    探索我們的五款獨特香氛，喚醒那些關於舞台、燈光與掌聲的記憶。
+                </p>
+            </div>
+        </section>
+
+        <!-- Product Grid -->
+        <section class="container" style="padding: 2rem 0 6rem 0;">
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <article class="product-card fade-in-up">
+                    <div class="product-image-area">
+                        <div class="product-placeholder-icon">❶</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-type">WOOD & SPICE</span>
+                        <h3 class="product-title">劇場之夜 01</h3>
+                        <p class="product-desc">微苦的皮革與沉穩的檀香交織，如同後台那扇沉重的木門，推開便是一場傳奇的序幕。</p>
+                        <a href="#" class="btn-product">VIEW DETAILS</a>
+                    </div>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card fade-in-up">
+                    <div class="product-image-area">
+                        <div class="product-placeholder-icon">❷</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-type">EARTHY TONES</span>
+                        <h3 class="product-title">靜謐後台 02</h3>
+                        <p class="product-desc">濕潤的苔蘚與冷冽的石材氣息，是熱鬧落幕後的餘韻，適合在獨處時細細品味那份純粹。</p>
+                        <a href="#" class="btn-product">VIEW DETAILS</a>
+                    </div>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-card fade-in-up">
+                    <div class="product-image-area">
+                        <div class="product-placeholder-icon">❸</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-type">CITRUS BURST</span>
+                        <h3 class="product-title">初次登台 03</h3>
+                        <p class="product-desc">明亮的佛手柑與酸甜的甜橙，如同聚光燈亮起時的屏息，充滿了少女般的期待與朝氣。</p>
+                        <a href="#" class="btn-product">VIEW DETAILS</a>
+                    </div>
+                </article>
+
+                <!-- Product 4 -->
+                <article class="product-card fade-in-up">
+                    <div class="product-image-area">
+                        <div class="product-placeholder-icon">❹</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-type">ORIENTAL MIST</span>
+                        <h3 class="product-title">巡演歲月 04</h3>
+                        <p class="product-desc">溫暖的琥珀與神祕的沒藥，訴說著跨海遠行的南洋回憶，是那段輝煌歲月最華麗的註解。</p>
+                        <a href="#" class="btn-product">VIEW DETAILS</a>
+                    </div>
+                </article>
+
+                <!-- Product 5 -->
+                <article class="product-card fade-in-up">
+                    <div class="product-image-area">
+                        <div class="product-placeholder-icon">❺</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-type">PURE COTTON</span>
+                        <h3 class="product-title">謝幕時刻 05</h3>
+                        <p class="product-desc">柔軟的白麝香與洗淨後的棉麻香氣，是所有掌聲與汗水後的輕柔撫慰，溫柔且恆久。</p>
+                        <a href="#" class="btn-product">VIEW DETAILS</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-brand">GO SHINE ME !</div>
+            <p>&copy; 2024 Yi Hsia Musical Theatre Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation Observer (Reused)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+
+</html>

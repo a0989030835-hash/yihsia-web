@@ -1,0 +1,836 @@
+/* =========================================
+   1. CSS Variables & Reset
+   ========================================= */
+:root {
+    /* Color Palette - Editable */
+    --color-neon-pink: #ff0099;
+    --color-neon-green: #00ff00;
+    --color-neon-blue: #0000ff;
+    --color-cyan: #00ffff;
+    --color-yellow: #ffff00;
+    --color-black: #1a1a1a;
+    --color-white: #ffffff;
+    --color-grey: #e0e0e0;
+    --color-light-beige: #f0f0eb;
+
+    /* Typography */
+    --font-primary: 'Noto Sans TC', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+
+    /* Spacing */
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-light-beige);
+    color: var(--color-black);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   2. Utilities & Helper Classes
+   ========================================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container.narrow {
+    max-width: 800px;
+}
+
+.cover-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Background Utilities */
+.bg-cyan {
+    background-color: var(--color-cyan);
+    color: #000;
+}
+
+.bg-neon-green {
+    background-color: var(--color-neon-green);
+}
+
+.bg-blue {
+    background-color: var(--color-neon-blue);
+}
+
+.bg-yellow {
+    background-color: var(--color-yellow);
+}
+
+.bg-grey {
+    background-color: var(--color-grey);
+}
+
+.bg-black {
+    background-color: var(--color-black);
+}
+
+.bg-magenta {
+    background-color: var(--color-neon-pink);
+}
+
+.bg-white {
+    background-color: var(--color-white);
+}
+
+.bg-light-beige {
+    background-color: var(--color-light-beige);
+}
+
+/* =========================================
+   3. Hero Section
+   ========================================= */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    min-height: 600px;
+    background: url('照片/首頁.png') no-repeat center top / cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Align nav to top */
+}
+
+/* Removed floating wrapper styles */
+
+/* Logo Overlay */
+.hero-logo-container {
+    flex-grow: 1;
+    /* Take up remaining space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+    pointer-events: none;
+    /* Let clicks pass through to potential underlying interactions if any */
+}
+
+.hero-logo {
+    max-width: 80%;
+    /* Responsive width */
+    width: 600px;
+    /* Make it slightly larger for impact */
+    height: auto;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+    /* Stronger shadow */
+    animation: fadeInScale 1.5s ease-out, floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floatLogo {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* =========================================
+   3.1 Navigation Bar (Glassmorphism Sticky)
+   ========================================= */
+.navbar {
+    position: fixed;
+    /* Sticky header */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 40px;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(26, 26, 26, 0.4);
+    /* Slightly darker glass */
+    backdrop-filter: blur(15px) saturate(150%);
+    /* Stronger glass effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    padding: 8px 20px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #000;
+    background: var(--color-cyan);
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Mobile Menu Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .nav-menu {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+}
+
+.title-badge {
+    display: inline-block;
+    background: var(--color-yellow);
+    color: var(--color-neon-blue);
+    padding: 5px 20px;
+    border-radius: 50px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    transform: rotate(-5deg);
+    margin-bottom: 1rem;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+}
+
+.main-title {
+    font-size: clamp(3rem, 10vw, 6rem);
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    transform: rotate(-5deg);
+    margin-bottom: 1rem;
+}
+
+.neon-text {
+    color: var(--color-neon-pink);
+    -webkit-text-stroke: 1px #fff;
+    filter: drop-shadow(0 0 5px var(--color-neon-pink));
+}
+
+.sub-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+}
+
+.sub-title {
+    color: var(--color-yellow);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 15px;
+    border-radius: 10px;
+}
+
+.star {
+    color: var(--color-cyan);
+    font-size: 1.5rem;
+}
+
+.hero-slogan {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin-top: auto;
+    margin-bottom: 3rem;
+}
+
+/* =========================================
+   4. Intro Section (Refined)
+   ========================================= */
+.section-intro {
+    background-color: var(--color-neon-green);
+    padding: 6rem 2rem;
+    /* More breathing room */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Pattern Overlay for Texture */
+.section-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+.intro-text {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 2;
+    /* Elegant line height */
+    color: #004d36;
+    letter-spacing: 0.05em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   5. Grid Layout System (The Core RWD Part)
+   ========================================= */
+.grid-layout {
+    display: grid;
+    /* 2 Columns on Desktop */
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+/* =========================================
+   5. Grid Layout Enhancements
+   ========================================= */
+.grid-item {
+    min-height: 400px;
+    overflow: hidden;
+    /* Required for image zoom */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Ensure images don't spill */
+}
+
+/* Media Wrapper for Video/Image Switch */
+.media-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.static-img {
+    position: relative;
+    /* Base layer */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+    /* On top */
+    transition: opacity 0.8s ease-in-out;
+}
+
+.video-overlay.video-finished {
+    opacity: 0;
+    /* Fade out to reveal image */
+    pointer-events: none;
+}
+
+/* Image Zoom Effect */
+.grid-img {
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.grid-item:hover .grid-img {
+    transform: scale(1.1);
+    /* Subtle zoom */
+}
+
+/* Content Box Polish */
+.grid-item.text-block {
+    display: flex;
+    align-items: center;
+}
+
+.text-block .content-box {
+    padding: 4rem;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.content-box h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid currentColor;
+    /* Thicker accent line */
+    padding-bottom: 1rem;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+.content-box p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* Modern Read More Button */
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: inherit;
+    border: none;
+    padding: 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.read-more::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.read-more:hover::after {
+    width: 100%;
+}
+
+.read-more:hover {
+    padding-left: 5px;
+    /* Subtle slide */
+}
+
+/* Placeholder Styling */
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 2rem;
+    font-weight: bold;
+    min-height: 400px;
+}
+
+.grayscale-bg {
+    background-image: linear-gradient(45deg, #111 25%, #222 25%, #222 50%, #111 50%, #111 75%, #222 75%, #222 100%);
+    background-size: 20px 20px;
+}
+
+/* =========================================
+   6. Footer Areas
+   ========================================= */
+.content-footer {
+    min-height: 300px;
+}
+
+.site-footer {
+    background-color: #000;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   7. Responsive Design (Mobile Breakpoints)
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Collapse Grid to 1 Column */
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust heights for mobile */
+    .hero-section {
+        height: 60vh;
+    }
+
+    .main-title {
+        font-size: 3.5rem;
+    }
+
+    .grid-item {
+        min-height: 250px;
+    }
+
+    .text-block .content-box {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* =========================================
+   8. Specific Utility Additions
+   ========================================= */
+.text-white {
+    color: #fff;
+}
+
+.text-white h3 {
+    border-bottom-color: #fff;
+}
+
+.placeholder-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: var(--font-display);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* =========================================
+   9. Scroll Animations
+   ========================================= */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-out;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s ease-out;
+}
+
+.slide-in-left.is-visible,
+.slide-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Continuous Ken Burns Effect */
+@keyframes kenBurns {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.image-block .grid-img {
+    /* Apply continuous subtle movement */
+    animation: kenBurns 20s infinite alternate ease-in-out;
+}
+
+/* =========================================
+   10. Team Page & Footer Enhancements
+   ========================================= */
+
+/* Section Title Design (Option 3: Black Pop) */
+.section-title-design {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000;
+    /* Black Text */
+    text-shadow:
+        4px 4px 0px var(--color-cyan),
+        8px 8px 0px var(--color-neon-pink);
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.section-title-design:hover {
+    transform: translate(-4px, -4px);
+    text-shadow:
+        6px 6px 0px var(--color-cyan),
+        12px 12px 0px var(--color-neon-pink);
+}
+
+/* Removed the star ::after pseudo-element */
+
+/* Team Grid */
+/* =========================================
+   11. Product Page Styles (Scent)
+   ========================================= */
+
+.product-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 20px;
+    max-width: 1000px;
+    /* Slightly narrower for list view */
+    margin: 0 auto;
+}
+
+.product-card {
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    /* Horizontal Layout */
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.product-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 10px 10px 0px var(--color-neon-pink),
+        20px 20px 0px var(--color-cyan);
+    z-index: 10;
+}
+
+.product-image-area {
+    width: 40%;
+    /* Fixed width for image side */
+    min-width: 300px;
+    background: linear-gradient(45deg, #f3f3f3 25%, #e8e8e8 25%, #e8e8e8 50%, #f3f3f3 50%, #f3f3f3 75%, #e8e8e8 75%, #e8e8e8 100%);
+    background-size: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid #000;
+    /* Right border instead of bottom */
+    border-bottom: none;
+    position: relative;
+}
+
+.product-placeholder-icon {
+    font-size: 5rem;
+    color: #333;
+    opacity: 0.2;
+}
+
+.product-info {
+    padding: 3rem 2rem;
+    /* More padding */
+    text-align: left;
+    flex: 1;
+    /* Take remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-title {
+    font-size: 2rem;
+    /* Larger title */
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.product-type {
+    font-family: var(--font-display);
+    color: var(--color-neon-pink);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.product-desc {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Mobile Responsiveness for Products */
+@media (max-width: 768px) {
+    .product-card {
+        flex-direction: column;
+    }
+
+    .product-image-area {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 1/1;
+        border-right: none;
+        border-bottom: 3px solid #000;
+    }
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border: none;
+}
+
+.member-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.member-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    background-color: #eee;
+    overflow: hidden;
+    border: 4px solid var(--color-cyan);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.member-card:hover .member-photo {
+    border-color: var(--color-neon-pink);
+}
+
+.member-photo.placeholder-bg {
+    background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-photo.placeholder-bg::after {
+    content: '☺';
+    font-size: 4rem;
+    color: #ccc;
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover .member-photo.placeholder-bg::after {
+    transform: rotate(15deg) scale(1.1);
+    color: #aaa;
+}
+
+.member-card h3 {
+    color: var(--color-neon-pink);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.member-role {
+    color: var(--color-neon-blue);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    position: relative;
+    display: inline-block;
+}
+
+.member-role::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--color-yellow);
+    margin: 5px auto 0;
+}
+
+.member-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+}

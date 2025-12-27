@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藝霞歌舞劇團 - 組員介紹</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Hero Section (Slightly shorter for sub-page) -->
+    <header class="hero-section" style="height: 50vh; min-height: 400px;">
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首頁</a></li>
+                <li><a href="index.html#tenacity" class="nav-link">關於藝霞</a></li>
+                <li><a href="scent.html" class="nav-link">香噴噴</a></li>
+                <li><a href="team.html" class="nav-link active">組員介紹</a></li>
+            </ul>
+        </nav>
+
+        <!-- Logo Overlay (Smaller on sub-page) -->
+        <div class="hero-logo-container">
+            <img src="照片/logo.svg" alt="Yi Hsia Logo" class="hero-logo" style="width: 300px;">
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Intro Section -->
+        <section class="section-intro">
+            <div class="container narrow" style="text-align: center;">
+                <h2 class="section-title-design">MEET THE TEAM</h2>
+                <p class="intro-text" style="text-align: center; margin-top: 2rem;">
+                    我們是一群熱愛藝霞文化的夥伴，致力於記錄與傳承這段閃耀的歷史。
+                </p>
+            </div>
+        </section>
+
+        <!-- Team Grid -->
+        <section class="container" style="padding: 2rem 0 6rem 0;">
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="member-card fade-in-up">
+                    <div class="member-photo placeholder-bg"></div>
+                    <h3>張藝芳</h3>
+                    <p class="member-role">團長 / Leader</p>
+                    <p class="member-desc">「藝術的生命在於不斷的創新與堅持。」致力於傳承藝霞的舞台美學。</p>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="member-card fade-in-up">
+                    <div class="member-photo placeholder-bg"></div>
+                    <h3>林曉霞</h3>
+                    <p class="member-role">藝術總監 / Creative Director</p>
+                    <p class="member-desc">用現代的視覺語彙，重新詮釋那段輝煌的亮片歲月。</p>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="member-card fade-in-up">
+                    <div class="member-photo placeholder-bg"></div>
+                    <h3>王大衛</h3>
+                    <p class="member-role">技術指導 / Technical Director</p>
+                    <p class="member-desc">確保每一次的燈光與乾冰，都能重現當年的劇場奇蹟。</p>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="member-card fade-in-up">
+                    <div class="member-photo placeholder-bg"></div>
+                    <h3>陳美玲</h3>
+                    <p class="member-role">造型顧問 / Stylist</p>
+                    <p class="member-desc">一針一線，將那份「極繁」美學重新縫入現代生活。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-brand">GO SHINE ME !</div>
+            <p>&copy; 2024 Yi Hsia Musical Theatre Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation Observer (Reused)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+
+</html>
