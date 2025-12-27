@@ -106,7 +106,7 @@ img {
     height: 100vh;
     /* Full viewport height */
     min-height: 600px;
-    background: url('照片/首頁.png') no-repeat center top / cover;
+    background: url('assets/首頁.png') no-repeat center top / cover;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
